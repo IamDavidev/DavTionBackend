@@ -1,39 +1,12 @@
-import { ApolloServer, gql } from 'apollo-server-express'
+import { ApolloServer } from 'apollo-server-express'
 import express from 'express'
 import http from 'http'
 
-const typeDefs = gql`
-    type Task {
-        id: ID
-        title: String
-        createdAt: String
-        finishedAt: String
-        description: String
-        status: String
-        priority: String
-    }
-    type Query {
-        tasks: [Task]
-    }
-`
-const resolvers = {
-    Query: {
-        tasks: () => {
-            return [
-                {
-                    id: '1',
-                    title: 'Task 1',
-                    createdAt: '2020-01-01',
-                    finishedAt: '2020-01-01',
-                    description: 'Description 1',
-                    status: 'Status 1',
-                    priority: 'Priority 1'
-                }
-            ]
-        }
-    }
-}
-const PORT = process.env.PORTSERVER || 3001
+import { typeDefs } from './src/types/tasks.types.js'
+import { resolvers } from './src/resolvers/tasks.resolvers.js'
+import { PORT } from './src/constants/client.js'
+
+
 
 async function MainServer(typeDefs, resolvers) {
     const app = express()
