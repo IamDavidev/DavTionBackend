@@ -18,14 +18,14 @@ export const resolvers = {
     },
     Mutation: {
         addTask: (_, args) => {
-            const { tilte, description, createdAt, finishedAt, status, priofity } = args
+            const { title, description, createdAt, finishedAt, status, priority } = args
             const taskNew = {
-                tilte,
+                title,
                 description,
                 createdAt,
                 finishedAt,
                 status,
-                priofity
+                priority
             }
             return exampleTasks = [...exampleTasks, taskNew]
         }
