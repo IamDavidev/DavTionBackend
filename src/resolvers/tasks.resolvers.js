@@ -1,3 +1,4 @@
+import { Task } from "../db/models/task.model.js"
 
 let exampleTasks = [
     {
@@ -14,20 +15,25 @@ let exampleTasks = [
 
 export const resolvers = {
     Query: {
-        getAllTasks: () => exampleTasks
+        getAllTasks: () => {
+            Task.find({}).then(tasks => {
+                return tasks
+            })
+        }
     },
     Mutation: {
         addTask: (_, args) => {
             const { title, description, createdAt, finishedAt, status, priority } = args
-            const taskNew = {
+            const taskNew = new Task({
                 title,
                 description,
                 createdAt,
                 finishedAt,
                 status,
                 priority
-            }
-            return exampleTasks = [...exampleTasks, taskNew]
+            })
+            taskNew.save()
+            return taskNew
         }
     }
 }
