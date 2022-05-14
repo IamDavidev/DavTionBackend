@@ -8,7 +8,11 @@ import { typeDefs } from './src/types/tasks.types.js'
 import { resolvers } from './src/resolvers/tasks.resolvers.js'
 import { PORT } from './src/constants/client.js'
 
+const app = express()
 
+app.get('/davtion', (_, res) => {
+    res.status(200).send(`<h1>Davtion Backend</h1>`)
+})
 
 async function MainServer(typeDefs, resolvers) {
     const app = express()
