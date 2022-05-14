@@ -2,7 +2,7 @@ import pkg from 'mongoose';
 const { connect } = pkg;
 
 const API_MONGO_URL = process.env.API_MONGO_URL || 'mongodb://localhost:27017/tasks';
-
+console.log(">> url mongo :", API_MONGO_URL);
 
 export async function bbdd() {
     try {

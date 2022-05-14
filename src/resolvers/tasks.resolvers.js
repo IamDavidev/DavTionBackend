@@ -15,10 +15,10 @@ let exampleTasks = [
 
 export const resolvers = {
     Query: {
-        getAllTasks: () => {
-            Task.find({}).then(tasks => {
-                return tasks
-            })
+        getAllTasks: async () => {
+            const Tasks = await Task.find()
+            console.log(Tasks)
+            return Tasks
         }
     },
     Mutation: {
